@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumora — Image Tools</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/android-chrome-512x512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-brand">
+      <img class="app-logo" src="assets/Lumora.png" alt="L" />
+      <h1 class="app-title">umora</h1>
+    </div>
+    <p class="app-tagline">Image Tools</p>
+  </header>
+
+  <main class="app-main">
+
+    <!-- Tool Tabs (extensible: each tool adds a tab) -->
+    <nav class="tool-tabs" id="toolTabs" role="tablist" aria-label="Image tools"></nav>
+
+    <!-- Active Tool Panel (rendered by each tool) -->
+    <section class="tool-panel" id="toolPanel"></section>
+
+    <!-- Upload Zone (shared across all tools) -->
+    <section class="upload-zone" id="uploadZone" aria-label="Upload image">
+      <input type="file" id="fileInput" accept="image/*" hidden />
+      <div class="upload-prompt" id="uploadPrompt">
+        <span class="upload-icon">⬆</span>
+        <p>Drop an image here or <button class="link-btn" id="browseBtn">browse</button></p>
+        <p class="upload-hint">PNG, JPG, WebP, GIF — processed locally in your browser</p>
+      </div>
+    </section>
+
+    <!-- Canvas Workspace -->
+    <section class="workspace" id="workspace" hidden>
+      <div class="canvas-wrap">
+        <canvas id="previewCanvas"></canvas>
+        <div class="canvas-loader" id="canvasLoader" hidden>
+          <div class="canvas-spinner"></div>
+        </div>
+      </div>
+      <div class="workspace-actions">
+        <button class="btn btn-secondary" id="resetBtn">↺ Reset</button>
+        <button class="btn btn-primary"   id="downloadBtn">↓ Download</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

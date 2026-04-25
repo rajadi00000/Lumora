@@ -1,0 +1,390 @@
+/* =============================================
+   Lumora — Design Tokens
+   ============================================= */
+:root {
+  --color-bg:         #0f0f11;
+  --color-surface:    #1a1a1f;
+  --color-surface-2:  #24242b;
+  --color-border:     #2e2e38;
+  --color-accent:     #7c6ff7;
+  --color-accent-dim: #4e49a8;
+  --color-text:       #e8e8f0;
+  --color-text-muted: #7a7a8e;
+  --color-success:    #4ade80;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  --shadow-card: 0 4px 24px rgba(0,0,0,.45);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --transition: 180ms ease;
+}
+
+/* =============================================
+   Reset / Base
+   ============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =============================================
+   Header
+   ============================================= */
+.app-header {
+  width: 100%;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-brand {
+  display: flex;
+  align-items: flex-end;
+  line-height: 1;
+}
+
+.app-logo {
+  height: 2.2rem;
+  width: auto;
+  object-fit: contain;
+  /* Pull 'umora' under the L's horizontal bar;
+     adjust if your PNG's right whitespace differs */
+  margin-right: -0.7rem;
+  margin-bottom: -0.45rem;
+}
+
+.app-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.app-tagline {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-left: 2px;
+  align-self: flex-end;
+  padding-bottom: 2px;
+}
+
+/* =============================================
+   Main layout
+   ============================================= */
+.app-main {
+  width: 100%;
+  max-width: 880px;
+  padding: 32px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* =============================================
+   Tool Tabs
+   ============================================= */
+.tool-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0;
+}
+
+.tool-tab {
+  padding: 8px 18px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.tool-tab:hover { color: var(--color-text); }
+
+.tool-tab[aria-selected="true"] {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+/* =============================================
+   Tool Panel
+   ============================================= */
+.tool-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tool-panel:empty { display: none; }
+
+/* ---- Control rows ---- */
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.control-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+/* ---- Pill selector ---- */
+.pill-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.pill:hover { color: var(--color-text); border-color: #4a4a58; }
+
+.pill.active,
+.pill[aria-pressed="true"] {
+  background: var(--color-accent-dim);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+/* ---- Range slider ---- */
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.slider-row input[type="range"] {
+  -webkit-appearance: none;
+  flex: 1;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--color-border);
+  outline: none;
+  cursor: pointer;
+  accent-color: var(--color-accent);
+}
+
+.slider-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(124,111,247,.25);
+}
+
+.slider-value {
+  min-width: 36px;
+  text-align: right;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+/* =============================================
+   Upload Zone
+   ============================================= */
+.upload-zone {
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 48px 24px;
+  text-align: center;
+  transition: border-color var(--transition), background var(--transition);
+  cursor: pointer;
+}
+
+.upload-zone.drag-over {
+  border-color: var(--color-accent);
+  background: rgba(124,111,247,.06);
+}
+
+.upload-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.upload-icon {
+  font-size: 2.25rem;
+  color: var(--color-accent);
+}
+
+.upload-prompt p {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+
+.upload-hint {
+  font-size: 0.775rem !important;
+  color: #4a4a58 !important;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  pointer-events: all;
+  text-decoration: underline;
+  padding: 0;
+}
+
+/* =============================================
+   Workspace
+   ============================================= */
+.workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.canvas-wrap {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: repeating-conic-gradient(#1e1e24 0% 25%, #18181d 0% 50%) 0 0 / 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+/* Processing overlay */
+.canvas-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(15, 15, 17, 0.55);
+  backdrop-filter: blur(2px);
+  border-radius: var(--radius-md);
+  z-index: 10;
+}
+
+.canvas-loader[hidden] { display: none; }
+
+.canvas-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(124, 111, 247, 0.2);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+
+#previewCanvas {
+  display: block;
+  max-width: 100%;
+  max-height: 60vh;
+  border-radius: var(--radius-sm);
+}
+
+.workspace-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* =============================================
+   Buttons
+   ============================================= */
+.btn {
+  padding: 9px 22px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+.btn-primary:hover { background: #9188f8; }
+
+.btn-secondary {
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+}
+.btn-secondary:hover { color: var(--color-text); border-color: #4a4a58; }
+
+/* =============================================
+   Processing overlay
+   ============================================= */
+.processing-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* =============================================
+   Responsive
+   ============================================= */
+@media (max-width: 600px) {
+  .app-main { padding: 20px 16px 48px; }
+  .tool-panel { padding: 16px; }
+  .upload-zone { padding: 32px 16px; }
+}
